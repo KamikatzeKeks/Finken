@@ -21,3 +21,5 @@ Route::get('/', [
 ]);
 
 Route::resource('kennzeichen', 'KennzeichenController');
+        
+        
