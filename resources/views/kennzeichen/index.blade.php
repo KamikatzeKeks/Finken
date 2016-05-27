@@ -12,13 +12,13 @@
         <td>Bundesland</td>
 
   </tr>
-    @foreach($tasks as $task)
+    @foreach($kennzeichenObjects as $kennzeichen)
     
   <tr>
-    <td>{{ $task->identifier}}</td>
-    <td>{{ $task->Stadt}}</td> 
-    <td>{{ $task->Landkreis}}</td>
-        <td>{{ $task->Bundesland}}</td>
+    <td>{{ $kennzeichen->identifier}}</td>
+    <td>{{ $kennzeichen->Stadt}}</td> 
+    <td>{{ $kennzeichen->Landkreis}}</td>
+        <td>{{ $kennzeichen->Bundesland}}</td>
 
   </tr>
   

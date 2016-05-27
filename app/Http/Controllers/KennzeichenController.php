@@ -37,27 +37,11 @@ class KennzeichenController extends Controller {
 
     public function store(KennzeichenFormRequest $request) {
         
-
-       // $input = Input::only('identifier');
-
-        
-            foreach ($request as $quest) {
-        Log::info('request value ' .   $request->get('identifier'));
-
-            }
+        $kennzeichenObjects = Kennzeichen::where('identifier', 'LIKE', $request->get('identifier'))->get();
 
 
-        $input = $request->all();
-        // Model::where('column', 'LIKE', '%value%')->get();
+        return View::make('kennzeichen.index', compact(['kennzeichenObjects']));
 
-        $tasks = Kennzeichen::where('identifier', 'LIKE', $request->get('identifier'))->get();
-        //    $tasks =Kennzeichen::where('identifier','like', "'".$input['identifier']."'")->first();
-
-            //   $tasks = Kennzeichen::all();
-
-        return View::make('kennzeichen.index', compact(['tasks']));
-
-        // return view('kennzeichen.index')->withKennzeichen($tasks);
     }
 
 }
