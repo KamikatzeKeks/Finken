@@ -8,7 +8,8 @@ use DB;
 use Session;
 use App\Kennzeichen;
 use View;
-
+use Log;
+use App\Http\Requests\KennzeichenFormRequest;
 class KennzeichenController extends Controller {
 
     public function index() {
@@ -19,44 +20,44 @@ class KennzeichenController extends Controller {
     public function show() {
 
         echo $request;
-        
-          $kennzeichen = DB::table('kennzeichen')->get();
 
-foreach ($kennzeichen as $user)
-{
-    var_dump($user->Stadt);
-}
+        $kennzeichen = DB::table('kennzeichen')->get();
 
-$input = $request->all();
+        foreach ($kennzeichen as $user) {
+            var_dump($user->Stadt);
+        }
+
+        $input = $request->all();
 
 
-    return redirect()->back();
-        
+        return redirect()->back();
+
         return view('kennzeichen.create');
     }
 
+    public function store(KennzeichenFormRequest $request) {
+        
 
+       // $input = Input::only('identifier');
 
- public function store(Request $request)
-    {
-        $this->validate($request, [
-            'identifier' => 'required',
-        ]);
+        
+            foreach ($request as $quest) {
+        Log::info('request value ' .   $request->get('identifier'));
+
+            }
 
 
         $input = $request->all();
-$tasks = DB::select("SELECT * FROM kennzeichen WHERE identifier LIKE '".$input['identifier']."'", array(1));
-    //    Session::flash('flash_message',       var_dump($results));
-  //  $bearLawly = Bear::where('name', '=', 'Lawly')
-foreach ($tasks as $user)
-{
-    var_dump($user->Stadt);
-}
-        //$tasks =Kennzeichen::where('identifier','like', "'".$input['identifier']."'")->first();
-    return View::make('kennzeichen.index', compact(['tasks']));
+        // Model::where('column', 'LIKE', '%value%')->get();
 
+        $tasks = Kennzeichen::where('identifier', 'LIKE', $request->get('identifier'))->get();
+        //    $tasks =Kennzeichen::where('identifier','like', "'".$input['identifier']."'")->first();
 
-   // return view('kennzeichen.index')->withKennzeichen($tasks);
-        
+            //   $tasks = Kennzeichen::all();
+
+        return View::make('kennzeichen.index', compact(['tasks']));
+
+        // return view('kennzeichen.index')->withKennzeichen($tasks);
     }
+
 }

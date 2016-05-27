@@ -5,24 +5,38 @@
 @section('content')
 
 <h1>Finken</h1>
-<p class="lead">home.blade ist das hier hier eingabefeld reinmachen.Hier könnte Ihre Werbung stehen oder ein text der Ihnen zeigt wie man dieses Tool verwendet Laravel ist sehr schön </p>
-<hr>
-{!! Form::open([
-    'route' => 'kennzeichen.store'
-]) !!}
+
+@if(Session::has('message'))
+    <div class="alert alert-info">
+      {{Session::get('message')}}
+    </div>
+@endif
+
+{!! Form::open(array('route' => 'findKennzeichen', 'class' => 'form')) !!}
 
 <div class="form-group">
-    {!! Form::label('identifier', 'Anfangsbuchstaben:', ['class' => 'control-label']) !!}
-    {!! Form::text('identifier', null, ['class' => 'form-control']) !!}
+    {!! Form::label('Geben Sie die Abkürzung des Kennzeichens ein') !!}
+    {!! Form::text('identifier', null, 
+        array('required', 
+              'class'=>'form-control', 
+              'placeholder'=>'Kennzeichen Identifier Beispiel DA für Darmstadt')) !!}
 </div>
 
 
-{!! Form::submit('Create New Task', ['class' => 'btn btn-primary']) !!}
 
+
+<div class="form-group">
+    {!! Form::submit('Kennzeichen suchen', 
+      array('class'=>'btn btn-primary')) !!}
+</div>
 {!! Form::close() !!}
 
-<a href="{{ route('kennzeichen.index') }}" class="btn btn-info">Kennzeichen finden</a>
-<a href="{{ route('kennzeichen.create') }}" class="btn btn-primary">Add New Task</a>
+
+
+
+
+
+
 
 @stop
   

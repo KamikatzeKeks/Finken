@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{{ route('home') }}">Kennzeichen</a>
+      <a class="navbar-brand" href="{{ route('home') }}">Home</a>
     </div>
     <div class="nav navbar-nav navbar-right">
         <li><a href="{{ route('home') }}">Home</a></li>

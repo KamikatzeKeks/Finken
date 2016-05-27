@@ -10,6 +10,8 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Kennzeichen;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,4 +24,5 @@ Route::get('/', [
 
 Route::resource('kennzeichen', 'KennzeichenController');
         
-        
+Route::post('kennzeichen', 
+  ['as' => 'findKennzeichen', 'uses' => 'KennzeichenController@store']);
