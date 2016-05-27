@@ -6,7 +6,7 @@
 <div class="col-sm-12">
     <table style="width:100%" class="table table-bordered table-condensed table-hover table-striped">
 <tr>
-    <td>Kennziffer</td>
+    <td>KFZ-Städtekürzel</td>
     <td>Stadt</td> 
     <td>Landkreis</td>
         <td>Bundesland</td>

@@ -15,11 +15,11 @@
 {!! Form::open(array('route' => 'findKennzeichen', 'class' => 'form')) !!}
 
 <div class="form-group">
-    {!! Form::label('Geben Sie die Abkürzung des Kennzeichens ein') !!}
+    {!! Form::label('KFZ-Städtekürzel') !!}
     {!! Form::text('identifier', null, 
         array('required', 
               'class'=>'form-control', 
-              'placeholder'=>'Kennzeichen Identifier Beispiel DA für Darmstadt')) !!}
+              'placeholder'=>'Geben Sie ein KFZ-Städtekürzel ein(Bsp: DA)')) !!}
 </div>
 
 
